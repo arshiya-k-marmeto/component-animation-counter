@@ -1,5 +1,5 @@
 
-# Account page tabs component
+# Animation counter component
 
 This section outlines the process of integrating an Animation Counter into your Shopify storefront. An Animation Counter is an interactive visual element designed to dynamically display numerical data such as sales figures, orders received, or the number of brands you have built. This feature enhances user engagement and provides a visually appealing method to convey important information to your customers.
 
