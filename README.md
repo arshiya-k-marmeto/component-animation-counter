@@ -27,7 +27,7 @@ Password : Marmeto
     Create a asset file named `component-animation-timer.js` file under Assets folder and copy paste the code
 
  - ### Step 3:
-    Navigate to customiser and add section which has options like heading , position,padding,making the section full width
+    Navigate to customiser and add section, this section has options like heading,position,padding,making the section full width
     Add blocks which has option to add title and number/count.
 	
 By following these steps and considerations, you can effectively implement an Animation Counter on your Shopify storefront, enhancing user engagement and showcasing important metrics in a dynamic and appealing manner.
