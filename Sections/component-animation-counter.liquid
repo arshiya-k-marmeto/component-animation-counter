@@ -1,0 +1,155 @@
+{{ 'component-animation-counter.js' | asset_url | script_tag }}
+{{ 'component-animation-counter.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="animation-counter section-{{ section.id }}-padding color--{{ section.settings.color_scheme }} {% unless section.settings.full_width %} page-width {% endunless %}">
+  <div class="animation-counter__content-container {{ section.settings.content_alignment }}">
+    {% if section.settings.heading != blank %}
+      <h2 class="animation-counter__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.paragraph != blank %}
+      <div class="animation-counter__paragraph">{{ section.settings.paragraph }}</div>
+    {% endif %}
+  </div>
+  <div class="animation-counter__container animation-counter__container--{{ section.settings.content_alignment }}">
+    {% for block in section.blocks %}
+      <div class="animation-counter__wrapper">
+        <number-counter class="animation-counter__number" data-counter-number="{{ block.settings.counter_number }}">0+</number-counter>
+        {% if block.settings.counter_title != blank %}
+          <p class="animation-counter__title">{{ block.settings.counter_title }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Animation Counter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Talk about your brand",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "center",
+      "label": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+      "label": "Paragraph"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Make section full width"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Counter",
+      "name": "Counter",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "counter_number",
+          "default": "1000",
+          "label": "Counter Number"
+        },
+        {
+          "type": "text",
+          "id": "counter_title",
+          "default": "Orders Received",
+          "label": "Counter Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animation Counter"
+    }
+  ]
+}
+{% endschema %}
