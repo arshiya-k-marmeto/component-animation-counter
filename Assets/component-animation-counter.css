@@ -1,0 +1,45 @@
+h0{
+  font-size: calc(40px + (52 - 40) * (100vw - 375px) / (1440 - 375));
+}
+h1{
+  font-size: calc(30px + (40 - 30) * (100vw - 375px) / (1440 - 375));
+}
+h2{
+  font-size: calc(20px + (24 - 20) * (100vw - 375px) / (1440 - 375));
+}
+p{
+  margin: 0;
+  font-size: calc(16px + (21 - 16) * (100vw - 375px) / (1440 - 375));
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.animation-counter__number{
+  font-size:80px;
+}
+.animation-counter__container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.animation-counter__wrapper{
+  padding:10px;
+}
+@media (max-width:950px){
+  .animation-counter__wrapper {
+    width: 50%;
+    flex: 1 1 50%;
+  }
+}
+@media (max-width:750px){
+  .animation-counter__wrapper {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
